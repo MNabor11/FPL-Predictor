@@ -53,7 +53,7 @@ print(f"Man Utd will play {teams[randomTeam]} this Sunday @ 12:30pm")
 print("\n---------------------------------------")
 
 # prints out all the keys of elements
-# print(players[0].keys())
+print(players[0].keys())
 # key is 'known_name'
 print("\n---------------------------------------")
 for player in players:
@@ -61,4 +61,24 @@ for player in players:
         print(f"Player - {player['known_name']}")
 print("\n---------------------------------------")
 
+# attempting to print out the Man Utd roster and the 'squad_number'
+Man_U_ID = None
+
+for id in United:
+    if id['name'] == 'Man Utd':
+        Man_U_ID = id['id']
+        print(Man_U_ID)
+i = 1
+print("The roster for MANCHESTER UNITED")
+for player in players:
+    if player['team'] == Man_U_ID:
+        if player.get('known_name'):
+            print(
+                f' \n {i} Player name: {player['known_name']} Number {player['squad_number']}')
+            i += 1
+
+# printing out the keys of 'total_players'
+
+total_Player = data['total_players']
+print(total_Player)
 print("Hello FPL")
