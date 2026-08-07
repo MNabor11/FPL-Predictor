@@ -22,5 +22,17 @@ for player in players:
         print(f"Form: {player['form']}")
         break
 
+# trying to print out Manchester United
+United = data['teams']
+# for team in United:
+# if team["team"] == "":
+# print("Test")
+# reads out all the keys so that i know what to use
+print(United[0].keys())
+
+
+for i, allTeams in enumerate(United, start=1):
+    print(f"Team {i} : {allTeams['name']}")
+
 
 print("Hello FPL")
