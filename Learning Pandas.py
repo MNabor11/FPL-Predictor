@@ -17,7 +17,7 @@ teams_DF = pd.DataFrame(fplData['teams'])
 # shows all the 'keys' in teams
 print(teams_DF.keys())
 
-# im going to print out id and name of all the teams
+# im going to print out the id and names of all the teams
 print(teams_DF[['id', 'name', 'short_name', 'team_division']])
 
 # printing out all the players
