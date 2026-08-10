@@ -28,6 +28,9 @@ for i, allPlayers in enumerate(players, start=1):
     if allPlayers.get('known_name'):
         print(f'{i} {allPlayers['known_name']}')
 
+
+# below this is day 2
+
 # using the 25/26 season data
 url_Players = (
     "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/cleaned_players.csv")
@@ -43,3 +46,13 @@ print(
         'first_name', 'second_name', 'total_points', 'element_type']]
     .sort_values('total_points', ascending=False)
 )
+
+# testing the same thing with a different url
+url_V2_Players = (
+    "https://github.com/vaastav/Fantasy-Premier-League/blob/master/data/2025-26/cleaned_players.csv")
+fpl_Request = requests.get(url_V2_Players)
+v2_Players_Data = fplRequest.json()
+print(v2_Players_Data.keys())
+
+v2_Players = v2_Players_Data['elements']
+print(v2_Players[0])
