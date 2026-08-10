@@ -50,9 +50,11 @@ print(
 # testing the same thing with a different url
 url_V2_Players = (
     "https://github.com/vaastav/Fantasy-Premier-League/blob/master/data/2025-26/cleaned_players.csv")
-fpl_Request = requests.get(url_V2_Players)
-v2_Players_Data = fplRequest.json()
-print(v2_Players_Data.keys())
+# fpl_Request = requests.get(url_V2_Players)
+# v2_Players_Data = fpl_Request.json()
+# print(v2_Players_Data.keys())
 
-v2_Players = v2_Players_Data['elements']
-print(v2_Players[0])
+# v2_Players = v2_Players_Data['elements']
+# print(v2_Players[0])
+
+# this url does not work because it's github page not an api like the official FPL fantasty page, so you read it in a cvs
