@@ -3,6 +3,7 @@
 from API import fpl
 from Teams import team
 from Players import players_Name
+import pandas as pd
 # data from the official api
 fpl_data = fpl()
 fpl_Teams = fpl_data['teams']
@@ -41,3 +42,11 @@ variants = {
     'role': ['variant', 'worker', 'boss']
 }
 print(variants.keys())
+
+for myNames in variants['name']:
+    print(myNames)
+
+# pandas
+
+df_Team = pd.DataFrame(fpl_Teams)
+print(df_Team[['id', 'name']])

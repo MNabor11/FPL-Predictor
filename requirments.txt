@@ -1,2 +1,5 @@
 Official FPL api 
 https://fantasy.premierleague.com/api/bootstrap-static/
+pandas 
+numpy 
+scikit
