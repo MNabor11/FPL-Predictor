@@ -1,7 +1,3 @@
-from API import fpl
-team_data = fpl('team')
-
-
 class team:
     def __init__(self, name, short_name):
         self.name = name
