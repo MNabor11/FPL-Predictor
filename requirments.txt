@@ -3,3 +3,6 @@ https://fantasy.premierleague.com/api/bootstrap-static/
 pandas 
 numpy 
 scikit
+https://draft.premierleague.com/api/league/14352/element-status
+https://draft.premierleague.com/api/league/14352/details
+'https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/players_raw.csv'
