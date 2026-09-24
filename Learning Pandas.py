@@ -58,3 +58,15 @@ url_V2_Players = (
 # print(v2_Players[0])
 
 # this url does not work because it's github page not an api like the official FPL fantasty page, so you read it in a cvs
+
+# Define data and columns
+data = [[0.3, 2], [0.5, 4], [0.1, 1]]
+columns = ["goals_per_90", "goals"]
+
+df = pd.DataFrame(data, columns=columns)
+print(df)
+# Output:
+#    goals_per_90  goals
+# 0           0.3      2
+# 1           0.5      4
+# 2           0.1      1

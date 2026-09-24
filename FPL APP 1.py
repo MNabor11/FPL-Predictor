@@ -74,10 +74,46 @@ for player in fpl_elements:
     }
     managed_players_list.append(players_dict)
 
+manage_player_dr = pd.DataFrame(managed_players_list)
+
 # connect managers and players
+fpl_manger_list = []
+for manager in manager_list:
+    for element in player_element_list:
+        for player in managed_players_list:
+            if manager['ID'] == element['owner'] and element['player_id'] == player['ID']:
+                # print(
+                # f"Name:  {manager['Name']} Player:  {player['Name']}  Team:  {manager['Team Name']}\n")
+                fpl_m_dict = {
+                    "Name": manager['Name'],
+                    "Player": player['Name'],
+                    "Team": manager['Team Name']
+                }
+                fpl_manger_list.append(fpl_m_dict)
+
+fpl_m_df = pd.DataFrame(fpl_manger_list)
+print(fpl_m_df)
+
 
 # read in the old seasons
+# url for the 25/26 season https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/players_raw.csv
+season2526_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/players_raw.csv"
+season2526 = pd.read_csv(season2526_cvs)
+for s2526 in season2526.keys():
+    print(s2526)
+# url for the 25/24 season
+# url https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/players_raw.csv
+season2425_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/players_raw.csv"
+season2425 = pd.read_csv(season2425_cvs)
+for s2425 in season2425.keys():
+    print(s2425)
 
+# url for the 23/24 season
+# https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2023-24/players_raw.csv
+season2324_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2023-24/players_raw.csv"
+season2324 = pd.read_csv(season2324_cvs)
+for s2324 in season2324.keys():
+    print(s2324)
 # use numpy
 
 # use scikit
