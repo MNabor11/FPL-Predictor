@@ -103,7 +103,9 @@ season2526 = pd.read_csv(season2526_cvs)
 
 # pulling in data from the s 25/26 year
 s2526_list = []
-for s2526 in season2526.keys():
+i = 0
+for i, s2526 in enumerate(season2526[i:], start=i):
+    print(s2526)
     s2526_dict = {
         "Assists": s2526['assists'],
         "Clean Sheets": s2526['clean_sheets'],
@@ -124,10 +126,11 @@ for s2526 in season2526.keys():
     }
     s2526_list.append(s2526_dict)
     # print(s2526)
+s2526_list.append(season2526)
 
-s2526_df = pd.DataFrame(s2526_list)
+s2526_df = pd.DataFrame(s2526)
 
-
+print(s2526_df)
 # url for the 25/24 season
 # url https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/players_raw.csv
 season2425_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/players_raw.csv"
