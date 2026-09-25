@@ -100,13 +100,39 @@ print(fpl_m_df)
 # url for the 25/26 season https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/players_raw.csv
 season2526_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/players_raw.csv"
 season2526 = pd.read_csv(season2526_cvs)
+
+# pulling in data from the s 25/26 year
+s2526_list = []
 for s2526 in season2526.keys():
-    pass
+    s2526_dict = {
+        "Assists": s2526['assists'],
+        "Clean Sheets": s2526['clean_sheets'],
+        "Clean Sheets Per 90": s2526['clean_sheets_per_90'],
+        "Defensive Contribution": s2526['defensive_contribution'],
+        "Defensive Contribution Per 90": s2526['defensive_contribution_per_90'],
+        "Expected Assists": s2526['expected_assists'],
+        "Expected Assists Per 90": s2526['expected_assists_per_90'],
+        "Expected Goals": s2526['expected_goals'],
+        "Expected Goals Per 90": s2526['expected_goals_per_90'],
+        "Goals": s2526['goals_scored'],
+        "Goals Conceded": s2526['goals_conceded'],
+        "Goal Conceded Per 90": s2526['goals_conceded_per_90'],
+        "Points Per Game": s2526['points_per_game'],
+        "Total Points": s2526['total_points'],
+        "Web Name": s2526['web_name'],
+        "Position": s2526['element_type']
+    }
+    s2526_list.append(s2526_dict)
     # print(s2526)
+
+s2526_df = pd.DataFrame(s2526_list)
+
+
 # url for the 25/24 season
 # url https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/players_raw.csv
 season2425_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/players_raw.csv"
 season2425 = pd.read_csv(season2425_cvs)
+s2425_list = []
 for s2425 in season2425.keys():
     pass
     # print(s2425)
