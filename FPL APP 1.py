@@ -102,33 +102,34 @@ season2526_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-Leag
 season2526 = pd.read_csv(season2526_cvs)
 
 # pulling in data from the s 25/26 year
-s2526_list = []
-i = 0
-for i, s2526 in enumerate(season2526[i:], start=i):
-    print(s2526)
-    s2526_dict = {
-        "Assists": s2526['assists'],
-        "Clean Sheets": s2526['clean_sheets'],
-        "Clean Sheets Per 90": s2526['clean_sheets_per_90'],
-        "Defensive Contribution": s2526['defensive_contribution'],
-        "Defensive Contribution Per 90": s2526['defensive_contribution_per_90'],
-        "Expected Assists": s2526['expected_assists'],
-        "Expected Assists Per 90": s2526['expected_assists_per_90'],
-        "Expected Goals": s2526['expected_goals'],
-        "Expected Goals Per 90": s2526['expected_goals_per_90'],
-        "Goals": s2526['goals_scored'],
-        "Goals Conceded": s2526['goals_conceded'],
-        "Goal Conceded Per 90": s2526['goals_conceded_per_90'],
-        "Points Per Game": s2526['points_per_game'],
-        "Total Points": s2526['total_points'],
-        "Web Name": s2526['web_name'],
-        "Position": s2526['element_type']
-    }
-    s2526_list.append(s2526_dict)
-    # print(s2526)
-s2526_list.append(season2526)
 
-s2526_df = pd.DataFrame(s2526)
+s2526_dict = {
+    "assists": "Assists",
+    "clean_sheets": "Clean Sheets",
+    "clean_sheets_per_90": "Clean Sheets Per 90",
+    "defensive_contribution": "Defensive Contribution",
+    "defensive_contribution_per_90": "Defensive Contribution Per 90",
+    "expected_assists": "Expected Assists",
+    "expected_assists_per_90": "Expected Assists Per 90",
+    "expected_goals": "Expected Goals",
+    "expected_goals_per_90": "Expected Goals Per 90",
+    "goals_scored": "Goals",
+    "goals_conceded": "Goals Conceded",
+    "goals_conceded_per_90": "Goal Conceded Per 90",
+    "points_per_game": "Points Per Game",
+    "total_points": "Total Points",
+    "web_name": "Web Name",
+    "element_type": "Position"
+}
+
+
+valid_cols = [col for col in s2526_dict.keys() if col in season2526.columns]
+
+
+s2526_df = season2526[valid_cols].rename(columns=s2526_dict)
+
+print(s2526_df.head(10))
+print(s2526_df.dtypes)
 
 print(s2526_df)
 # url for the 25/24 season
