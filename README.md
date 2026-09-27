@@ -5,4 +5,10 @@ A fantasy Preimer Leguae predictor for head to head using AI
 * AI simulates predicted points for players and teams
 * Use it for selecting waviers
 * AI predicts match game scores 
+## Upcoming Plans
+* Setup Flask
+* Setup SQL
+* JS
+
+
 
