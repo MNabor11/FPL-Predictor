@@ -74,7 +74,7 @@ for player in fpl_elements:
     }
     managed_players_list.append(players_dict)
 
-manage_player_dr = pd.DataFrame(managed_players_list)
+manage_player_df = pd.DataFrame(managed_players_list)
 
 # connecting managers and players
 fpl_manger_list = []
@@ -91,8 +91,8 @@ for manager in manager_list:
                 }
                 fpl_manger_list.append(fpl_m_dict)
 
-fpl_m_df = pd.DataFrame(fpl_manger_list).head(-20)
-print(fpl_m_df)
+fpl_m_df = pd.DataFrame(fpl_manger_list)
+# print(fpl_m_df)
 
 
 # read in the old seasons
@@ -123,31 +123,65 @@ s2526_dict = {
 }
 
 
-valid_cols = [col for col in s2526_dict.keys() if col in season2526.columns]
+my_cols = [col for col in s2526_dict.keys() if col in season2526.columns]
+s2526_df = season2526[my_cols].rename(columns=s2526_dict)
 
-
-s2526_df = season2526[valid_cols].rename(columns=s2526_dict)
-
-print(s2526_df.head(10))
+# print(s2526_df.head(10))
 print(s2526_df.dtypes)
 
-print(s2526_df)
+# print(s2526_df)
+print(f" Manager df\n{managers_df.dtypes}")
+print(f"fpl m \n{fpl_m_df.dtypes}")
+print(f"{manage_player_df.dtypes}")
+print(player_element_df.dtypes)
+
 # url for the 25/24 season
 # url https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/players_raw.csv
 season2425_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/players_raw.csv"
 season2425 = pd.read_csv(season2425_cvs)
-s2425_list = []
-for s2425 in season2425.keys():
-    pass
-    # print(s2425)
+s2425_dict = {
+    "assists": "Assists",
+    "clean_sheets": "Clean Sheets",
+    "clean_sheets_per_90": "Clean Sheets Per 90",
+    "expected_assists": "Expected Assists",
+    "expected_assists_per_90": "Expected Assists Per 90",
+    "expected_goals": "Expected Goals",
+    "expected_goals_per_90": "Expected Goals Per 90",
+    "goals_scored": "Goals",
+    "goals_conceded": "Goals Conceded",
+    "goals_conceded_per_90": "Goal Conceded Per 90",
+    "points_per_game": "Points Per Game",
+    "total_points": "Total Points",
+    "web_name": "Web Name",
+    "element_type": "Position"
+}
+s2425_col = [col for col in s2425_dict.keys() if col in season2425.columns]
+s2425_df = season2425[s2425_col].rename(columns=s2425_dict)
+print(s2425_df.dtypes)
 
 # url for the 23/24 season
 # https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2023-24/players_raw.csv
 season2324_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2023-24/players_raw.csv"
 season2324 = pd.read_csv(season2324_cvs)
-for s2324 in season2324.keys():
-    pass
-    # print(s2324)
+s2324_dict = {
+    "assists": "Assists",
+    "clean_sheets": "Clean Sheets",
+    "clean_sheets_per_90": "Clean Sheets Per 90",
+    "expected_assists": "Expected Assists",
+    "expected_assists_per_90": "Expected Assists Per 90",
+    "expected_goals": "Expected Goals",
+    "expected_goals_per_90": "Expected Goals Per 90",
+    "goals_scored": "Goals",
+    "goals_conceded": "Goals Conceded",
+    "goals_conceded_per_90": "Goal Conceded Per 90",
+    "points_per_game": "Points Per Game",
+    "total_points": "Total Points",
+    "web_name": "Web Name",
+    "element_type": "Position"
+}
+s2324_col = [col for col in s2425_dict.keys() if col in season2425.columns]
+s2324_df = season2324[s2425_col].rename(columns=s2324_dict)
+print(s2324_df.dtypes)
 # use numpy
 
 # use scikit
