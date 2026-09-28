@@ -56,7 +56,7 @@ player_element_df = pd.DataFrame(player_element_list)
 fpl_api_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
 fpl_api_requests = requests.get(fpl_api_url)
 fpl_api_details = fpl_api_requests.json()
-# print(fpl_api_details.keys())
+#print(fpl_api_details.keys())
 fpl_elements = fpl_api_details['elements']
 managed_players_list = []
 for player in fpl_elements:
@@ -75,6 +75,18 @@ for player in fpl_elements:
     managed_players_list.append(players_dict)
 
 manage_player_df = pd.DataFrame(managed_players_list)
+
+# getting prem team id's
+fpl_api_teams = fpl_api_details['teams']
+fpl_teams_list=[]
+for team in fpl_api_teams:
+    fpl_teams_dict = {
+        "ID": team['id'],
+        "Team Name": team['name'],
+    }
+    fpl_teams_list.append(fpl_teams_dict)
+fpl_teams_df = pd.DataFrame(fpl_teams_list)
+
 
 # connecting managers and players
 fpl_manger_list = []
@@ -179,9 +191,70 @@ s2324_dict = {
     "web_name": "Web Name",
     "element_type": "Position"
 }
-s2324_col = [col for col in s2425_dict.keys() if col in season2425.columns]
-s2324_df = season2324[s2425_col].rename(columns=s2324_dict)
+s2324_col = [col for col in s2324_dict.keys() if col in season2324.columns]
+s2324_df = season2324[s2324_col].rename(columns=s2324_dict)
 print(s2324_df.dtypes)
+
+# those were total data from the whole of those seasons
+
+# attempting to get gameweek 1 - 38 (GW) Season 25/26
+# url for GW 1-38 https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/gws/merged_gw.csv
+s2526_gw_url = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/gws/merged_gw.csv"
+s2526_gw_csv = pd.read_csv(s2526_gw_url)
+print(s2526_gw_csv.keys())
+s2526_dict_gw ={
+"assists": "Assists",
+    "clean_sheets": "Clean Sheets",
+    "clean_sheets_per_90": "Clean Sheets Per 90",
+    "defensive_contribution": "Defensive Contribution",
+    "defensive_contribution_per_90": "Defensive Contribution Per 90",
+    "expected_assists": "Expected Assists",
+    "expected_assists_per_90": "Expected Assists Per 90",
+    "expected_goals": "Expected Goals",
+    "expected_goals_per_90": "Expected Goals Per 90",
+    "goals_scored": "Goals",
+    "goals_conceded": "Goals Conceded",
+    "goals_conceded_per_90": "Goal Conceded Per 90",
+    "points_per_game": "Points Per Game",
+    "total_points": "Total Points",
+    "name".lower(): "Name",
+    "element_type": "Position",
+    "GW": "Game Week",
+    "was_home": "Was Home",
+    'opponent_team': "Opponent Team",
+    "element": "Player ID"
+}
+
+s2526_gw = [col for col in s2526_dict_gw.keys() if col in s2526_gw_csv.columns]
+s2526_df_gw = s2526_gw_csv[s2526_gw].rename(columns=s2526_dict_gw)
+
+print(s2526_df_gw.dtypes)
+
+
+
+my_name = input("Enter a name: ")
+ben = s2526_df_gw[
+    s2526_df_gw["Name"] == my_name
+]
+with pd.option_context(
+    "display.max_rows", None,
+    "display.max_columns", None,
+    "display.width", None
+):
+    print(ben)
+
+print(f"BRUNO\n{ben[[
+    "Game Week",
+    "Opponent Team",
+    "Was Home",
+    "Goals",
+    "Assists",
+    "Expected Goals",
+    "Expected Assists",
+    "Total Points"
+]]}")
+
+# use flask
 # use numpy
 
 # use scikit

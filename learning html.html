@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player Search</title>
+  <style>
+    .search-container {
+      display: flex;
+      gap: 8px;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 10px 14px;
+      font-size: 15px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .search-btn {
+        font-family: "Times New Roman";
+      padding: 10px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(to right, #953CFF, #22C9FF);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .search-btn:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <form action="/search" method="GET" class="search-container">
+    <input
+      type="text"
+      class="search-input"
+      name="query"
+      placeholder ="Search player name..."
+      required
+    >
+    <button type="submit" class="search-btn">Search</button>
+  </form>
+
+</body>
+</html>
