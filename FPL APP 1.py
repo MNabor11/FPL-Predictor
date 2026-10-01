@@ -56,7 +56,7 @@ player_element_df = pd.DataFrame(player_element_list)
 fpl_api_url = "https://fantasy.premierleague.com/api/bootstrap-static/"
 fpl_api_requests = requests.get(fpl_api_url)
 fpl_api_details = fpl_api_requests.json()
-#print(fpl_api_details.keys())
+# print(fpl_api_details.keys())
 fpl_elements = fpl_api_details['elements']
 managed_players_list = []
 for player in fpl_elements:
@@ -78,7 +78,7 @@ manage_player_df = pd.DataFrame(managed_players_list)
 
 # getting prem team id's
 fpl_api_teams = fpl_api_details['teams']
-fpl_teams_list=[]
+fpl_teams_list = []
 for team in fpl_api_teams:
     fpl_teams_dict = {
         "ID": team['id'],
@@ -202,8 +202,8 @@ print(s2324_df.dtypes)
 s2526_gw_url = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/gws/merged_gw.csv"
 s2526_gw_csv = pd.read_csv(s2526_gw_url)
 print(s2526_gw_csv.keys())
-s2526_dict_gw ={
-"assists": "Assists",
+s2526_dict_gw = {
+    "assists": "Assists",
     "clean_sheets": "Clean Sheets",
     "clean_sheets_per_90": "Clean Sheets Per 90",
     "defensive_contribution": "Defensive Contribution",
@@ -221,7 +221,7 @@ s2526_dict_gw ={
     "element_type": "Position",
     "GW": "Game Week",
     "was_home": "Was Home",
-    'opponent_team': "Opponent Team",
+    'opponent_team': "O Team",
     "element": "Player ID"
 }
 
@@ -229,7 +229,6 @@ s2526_gw = [col for col in s2526_dict_gw.keys() if col in s2526_gw_csv.columns]
 s2526_df_gw = s2526_gw_csv[s2526_gw].rename(columns=s2526_dict_gw)
 
 print(s2526_df_gw.dtypes)
-
 
 
 my_name = input("Enter a name: ")
@@ -245,7 +244,7 @@ with pd.option_context(
 
 print(f"BRUNO\n{ben[[
     "Game Week",
-    "Opponent Team",
+    "O Team",
     "Was Home",
     "Goals",
     "Assists",
