@@ -83,6 +83,8 @@ for team in fpl_api_teams:
     fpl_teams_dict = {
         "ID": team['id'],
         "Team Name": team['name'],
+        "Home Str" : team['strength_overall_home'],
+        "Away Str" : team['strength_overall_away'],
     }
     fpl_teams_list.append(fpl_teams_dict)
 fpl_teams_df = pd.DataFrame(fpl_teams_list)
