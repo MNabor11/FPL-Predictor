@@ -83,6 +83,8 @@ for team in fpl_api_teams:
     fpl_teams_dict = {
         "ID": team['id'],
         "Team Name": team['name'],
+        "Home Str" : team['strength_overall_home'],
+        "Away Str" : team['strength_overall_away'],
     }
     fpl_teams_list.append(fpl_teams_dict)
 fpl_teams_df = pd.DataFrame(fpl_teams_list)
@@ -108,7 +110,7 @@ fpl_m_df = pd.DataFrame(fpl_manger_list)
 
 
 # read in the old seasons
-
+# the total season totals
 # url for the 25/26 season https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/players_raw.csv
 season2526_cvs = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/players_raw.csv"
 season2526 = pd.read_csv(season2526_cvs)
@@ -197,6 +199,8 @@ print(s2324_df.dtypes)
 
 # those were total data from the whole of those seasons
 
+
+# gw 1 -38 seasons
 # attempting to get gameweek 1 - 38 (GW) Season 25/26
 # url for GW 1-38 https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/gws/merged_gw.csv
 s2526_gw_url = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2025-26/gws/merged_gw.csv"
@@ -252,6 +256,63 @@ print(f"BRUNO\n{ben[[
     "Expected Assists",
     "Total Points"
 ]]}")
+
+# gw for 24/25
+# url https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/gws/merged_gw.csv
+s2425_url_gw = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/gws/merged_gw.csv"
+s2425_gw_csv = pd.read_csv(s2425_url_gw)
+s2425_dict_gw ={
+    "assists": "Assists",
+    "clean_sheets": "Clean Sheets",
+    "clean_sheets_per_90": "Clean Sheets Per 90",
+    "expected_assists": "Expected Assists",
+    "expected_assists_per_90": "Expected Assists Per 90",
+    "expected_goals": "Expected Goals",
+    "expected_goals_per_90": "Expected Goals Per 90",
+    "goals_scored": "Goals",
+    "goals_conceded": "Goals Conceded",
+    "goals_conceded_per_90": "Goal Conceded Per 90",
+    "points_per_game": "Points Per Game",
+    "total_points": "Total Points",
+    "name".lower(): "Name",
+    "element_type": "Position",
+    "GW": "Game Week",
+    "was_home": "Was Home",
+    'opponent_team': "Opponent Team",
+    "element": "Player ID"
+}
+
+s2425_gw = [col for col in s2425_dict_gw.keys() if col in s2425_gw_csv.columns]
+s2425_gw_df = s2425_gw_csv[s2425_gw].rename(columns=s2425_dict_gw)
+
+# gw for 23/24
+# url https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2023-24/gws/merged_gw.csv
+s2324_url_gw = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2023-24/gws/merged_gw.csv"
+s2324_gw_csv = pd.read_csv(s2324_url_gw)
+s2324_dict_gw ={
+    "assists": "Assists",
+    "clean_sheets": "Clean Sheets",
+    "clean_sheets_per_90": "Clean Sheets Per 90",
+    "expected_assists": "Expected Assists",
+    "expected_assists_per_90": "Expected Assists Per 90",
+    "expected_goals": "Expected Goals",
+    "expected_goals_per_90": "Expected Goals Per 90",
+    "goals_scored": "Goals",
+    "goals_conceded": "Goals Conceded",
+    "goals_conceded_per_90": "Goal Conceded Per 90",
+    "points_per_game": "Points Per Game",
+    "total_points": "Total Points",
+    "name".lower(): "Name",
+    "element_type": "Position",
+    "GW": "Game Week",
+    "was_home": "Was Home",
+    'opponent_team': "Opponent Team",
+    "element": "Player ID"
+}
+s2324_gw = [col for col in s2425_dict_gw.keys() if col in s2425_gw_csv.columns]
+s2324_gw_df = s2324_gw_csv[s2324_gw].rename(columns=s2324_dict_gw)
+
+
 
 # use flask
 # use numpy
