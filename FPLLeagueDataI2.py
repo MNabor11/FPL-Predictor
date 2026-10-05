@@ -2,8 +2,6 @@ import requests
 import pandas as pd
 
 
-user_league_id = int(input("Enter the league ID: "))
-
 # pulling league name and manager data
 # https://draft.premierleague.com/api/league/14352/details the api to pull the data
 
@@ -32,11 +30,6 @@ class GettingLeagueData:
         return league_name, pd.DataFrame(manager_data), self.league_id
 
 
-league = GettingLeagueData(user_league_id)
-league_name, manager_data_df, league_id = league.get_league_data()
-print(f"League Name: {league_name} ID: {user_league_id}")
-print(manager_data_df)  # manager data frame
-
 # getting manager players and player id's
 # https://draft.premierleague.com/api/league/14352/element-status
 
@@ -61,9 +54,9 @@ class elementData:
         return pd.DataFrame(player_element_list)
 
 
-element_player_data = elementData(user_league_id)
+"""element_player_data = elementData(user_league_id)
 player_element_df = element_player_data.get_element_data()
-print(player_element_df)  # player data frame
+print(player_element_df)  # player data frame"""
 
 # getting the players data
 # connecting player id to players names and connecting them to managers
@@ -113,15 +106,21 @@ class fplData:
         return pd.DataFrame(fpl_teams_list)
 
 
-fplData = fplData(user_league_id)
+"""fplData = fplData(user_league_id)
 fpl_player_data_df = fplData.get_fpl_data()  # fpl player data frame
 fpl_teams_data_df = fplData.get_fpl_teams()  # teams data frame
-print(fpl_teams_data_df)
+print(fpl_teams_data_df)"""
 
-changing_player_postion = {1: "GKP",
+"""changing_player_postion = {1: "GKP",
                            2: "DEF",
                            3: "MID",
                            4: "FWD"}
 fpl_player_data_df['Position'] = fpl_player_data_df['Position'].map(
     changing_player_postion)
-print(fpl_player_data_df)
+print(fpl_player_data_df)"""
+
+if __name__ == "__main__":
+    some_league_id = int(input("Enter the league ID: "))
+    league = GettingLeagueData(some_league_id)
+    name, df, _ = league.get_league_data()
+    print(df)
