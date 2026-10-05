@@ -15,10 +15,9 @@ def main():
     player_element_df = element_player_data.get_element_data()
     print(player_element_df)
 
-    fplData = fplData(user_league_id)
-    fplData = fplData(user_league_id)
-    fpl_player_data_df = fplData.get_fpl_data()  # fpl player data frame
-    fpl_teams_data_df = fplData.get_fpl_teams()  # teams data frame
+    fpl_Data = fplData(user_league_id)
+    fpl_player_data_df = fpl_Data.get_fpl_data()  # fpl player data frame
+    fpl_teams_data_df = fpl_Data.get_fpl_teams()  # teams data frame
     print(fpl_teams_data_df)
 
     changing_player_postion = {1: "GKP",
