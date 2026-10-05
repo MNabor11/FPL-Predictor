@@ -3,3 +3,8 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+.DS_Store
