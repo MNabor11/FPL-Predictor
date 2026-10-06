@@ -35,9 +35,9 @@ class S2526Total():
         return s2526_total_df
 
 
-s2526_season_total = S2526Total()
+"""s2526_season_total = S2526Total()
 s2526_total_df = s2526_season_total.get_s2526_data()  # total season data for 25/26
-print(s2526_total_df.sort_values(by="Total Points", ascending=False))
+print(s2526_total_df.sort_values(by="Total Points", ascending=False))"""
 
 
 # url for the 25/24 season
@@ -73,9 +73,9 @@ class S2425Total():
         return s2425_total_df
 
 
-s2425_season_total = S2425Total()
+"""s2425_season_total = S2425Total()
 s2425_total_df = s2425_season_total.get_s2425_data()  # total season data for 24/25
-print(s2425_total_df.sort_values(by="Total Points", ascending=False))
+print(s2425_total_df.sort_values(by="Total Points", ascending=False))"""
 
 
 # url for the 23/24 season
@@ -110,6 +110,6 @@ class S2324Total():
         return s2324_total_df
 
 
-s2324_season_total = S2324Total()
+"""s2324_season_total = S2324Total()
 s2324_total_df = s2324_season_total.get_s2324_data()  # total season data for 23/24
-print(s2324_total_df.sort_values(by="Total Points", ascending=False))
+print(s2324_total_df.sort_values(by="Total Points", ascending=False))"""

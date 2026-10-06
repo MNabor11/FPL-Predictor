@@ -44,10 +44,10 @@ class S2526Weekly():
         return s2526_weekly_df
 
 
-S2526_season_weekly = S2526Weekly()
+"""S2526_season_weekly = S2526Weekly()
 s2526_weekly_df = S2526_season_weekly.get_s2526_weekly_data()  # weekly data for 25/26
 print(s2526_weekly_df.sort_values(
-    by=["Game Week", "Total Points"], ascending=False))
+    by=["Game Week", "Total Points"], ascending=False))"""
 
 # gw for 24/25
 # url https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2024-25/gws/merged_gw.csv
@@ -90,10 +90,10 @@ class S2425Weekly():
         return s2425_weekly_df
 
 
-S2425Weekly_season_weekly = S2425Weekly()  # weekly data for 24/25
+"""S2425Weekly_season_weekly = S2425Weekly()  # weekly data for 24/25
 s2425_weekly_df = S2425Weekly_season_weekly.get_s2425_weekly_data()
 print(s2425_weekly_df.sort_values(
-    by=["Game Week", "Total Points"], ascending=False))
+    by=["Game Week", "Total Points"], ascending=False))"""
 
 # gw for 23/24
 # url https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/refs/heads/master/data/2023-24/gws/merged_gw.csv
@@ -136,8 +136,8 @@ class S2324Weekly():
         return s2324_weekly_df
 
 
-S2324Weekly_season_weekly = S2324Weekly()
+"""S2324Weekly_season_weekly = S2324Weekly()
 # weekly data for 23/24
 S2324_weekly_df = S2324Weekly_season_weekly.get_s2324_weekly_data()
 print(S2324_weekly_df.sort_values(
-    by=["Game Week", "Total Points"], ascending=False))
+    by=["Game Week", "Total Points"], ascending=False))"""
