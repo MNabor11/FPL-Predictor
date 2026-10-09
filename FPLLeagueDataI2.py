@@ -12,22 +12,23 @@ class GettingLeagueData:
 
     def get_league_data(self):
         url = f"https://draft.premierleague.com/api/league/{self.league_id}/details"
-        response = requests.get(url)
-        league_data = response.json()
-
-        league_name = league_data['league']['name']
-        managers = league_data['league_entries']
-
-        manager_data = []
-        for manager in managers:
-            manager_info = {
-                'ID': manager['entry_id'],
-                'Name': manager['player_first_name'] + " " + manager['player_last_name'],
-                'Team Name': manager['entry_name'],
-                'Short Name': manager['short_name']
-            }
-            manager_data.append(manager_info)
-        return league_name, pd.DataFrame(manager_data), self.league_id
+        try:
+            response = requests.get(url)
+            league_data = response.json()
+            league_name = league_data['league']['name']
+            managers = league_data['league_entries']
+            manager_data = []
+            for manager in managers:
+                manager_info = {
+                    'ID': manager['entry_id'],
+                    'Name': manager['player_first_name'] + " " + manager['player_last_name'],
+                    'Team Name': manager['entry_name'],
+                    'Short Name': manager['short_name']
+                }
+                manager_data.append(manager_info)
+            return league_name, pd.DataFrame(manager_data), self.league_id
+        except Exception:
+            print(f"Error: Can't get data from the league")
 
 
 # getting manager players and player id's
@@ -40,18 +41,21 @@ class elementData:
 
     def get_element_data(self):
         element_url = f"https://draft.premierleague.com/api/league/{self.user_league_id}/element-status"
-        element_response = requests.get(element_url)
-        element_data = element_response.json()
-        element_status = element_data['element_status']
-        player_element_list = []
-        for getting_players in element_status:
-            if getting_players['owner'] is not None:
-                player_id_dict = {
-                    "Owner": getting_players['owner'],
-                    "Player ID": getting_players['element']
-                }
-                player_element_list.append(player_id_dict)
-        return pd.DataFrame(player_element_list)
+        try:
+            element_response = requests.get(element_url)
+            element_data = element_response.json()
+            element_status = element_data['element_status']
+            player_element_list = []
+            for getting_players in element_status:
+                if getting_players['owner'] is not None:
+                    player_id_dict = {
+                        "Owner": getting_players['owner'],
+                        "Player ID": getting_players['element']
+                    }
+                    player_element_list.append(player_id_dict)
+            return pd.DataFrame(player_element_list)
+        except Exception:
+            print("Error: Can't get the managers data")
 
 
 """element_player_data = elementData(user_league_id)
@@ -120,7 +124,7 @@ fpl_player_data_df['Position'] = fpl_player_data_df['Position'].map(
 print(fpl_player_data_df)"""
 
 if __name__ == "__main__":
-    some_league_id = int(input("Enter the league ID: "))
-    league = GettingLeagueData(some_league_id)
+    test_league_id = int(input("Enter the league ID: "))
+    league = GettingLeagueData(test_league_id)
     name, df, _ = league.get_league_data()
     print(df)
