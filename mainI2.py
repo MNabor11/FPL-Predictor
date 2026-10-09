@@ -35,12 +35,12 @@ def main():
             fpl_Data = fplData(user_league_id)
             fpl_player_data_df = fpl_Data.get_fpl_data()  # fpl player data frame
             fpl_teams_data_df = fpl_Data.get_fpl_teams()  # teams data frame
-            print(fpl_teams_data_df)
+            # print(fpl_teams_data_df)
 
             changing_player_postion = {1: "GKP", 2: "DEF", 3: "MID", 4: "FWD"}
             fpl_player_data_df['Position'] = fpl_player_data_df['Position'].map(
                 changing_player_postion)
-            print(fpl_player_data_df)
+            # print(fpl_player_data_df)
 
             # old total season data s23 - s2526
             get_old_season_data = input(
